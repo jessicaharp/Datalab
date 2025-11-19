@@ -1,1 +1,905 @@
-# Datalab
+# Datalab<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Economy Data Lab | Compliance & Retention Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #2E75B5 0%, #1a4d7a 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2E75B5 0%, #1a4d7a 100%);
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            background: #C00000;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(192, 0, 0, 0.4);
+        }
+
+        /* Three Disasters Section */
+        .disasters {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .disasters h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2E75B5;
+            margin-bottom: 3rem;
+        }
+
+        .disaster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .disaster-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 5px solid #C00000;
+        }
+
+        .disaster-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .disaster-card h3 {
+            color: #C00000;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .disaster-card .cost {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2E75B5;
+            margin: 1rem 0;
+        }
+
+        /* Process Animation Section */
+        .process-section {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2E75B5;
+            margin-bottom: 1rem;
+        }
+
+        .process-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        /* Animated Process Flow */
+        .process-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        .process-step:nth-child(1) { animation-delay: 0.2s; }
+        .process-step:nth-child(2) { animation-delay: 0.5s; }
+        .process-step:nth-child(3) { animation-delay: 0.8s; }
+        .process-step:nth-child(4) { animation-delay: 1.1s; }
+        .process-step:nth-child(5) { animation-delay: 1.4s; }
+
+        .process-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #2E75B5, #1a4d7a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(46, 117, 181, 0.3);
+            position: relative;
+        }
+
+        .process-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #2E75B5;
+            animation: pulse 2s infinite;
+        }
+
+        .process-step h3 {
+            color: #2E75B5;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .process-arrow {
+            font-size: 3rem;
+            color: #2E75B5;
+            opacity: 0.3;
+        }
+
+        /* Interactive Data Viz */
+        .data-viz-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .data-viz-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2E75B5;
+            margin-bottom: 3rem;
+        }
+
+        .data-flow-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .data-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .data-input-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #2E75B5;
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+
+        .data-input-card:nth-child(1) { animation-delay: 0.2s; }
+        .data-input-card:nth-child(2) { animation-delay: 0.4s; }
+        .data-input-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .data-input-card h4 {
+            color: #2E75B5;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+
+        .processing-animation {
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .processing-bars {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .bar {
+            width: 40px;
+            height: 80px;
+            background: linear-gradient(180deg, #2E75B5, #1a4d7a);
+            border-radius: 5px;
+            animation: barPulse 1.5s ease-in-out infinite;
+        }
+
+        .bar:nth-child(1) { animation-delay: 0s; }
+        .bar:nth-child(2) { animation-delay: 0.2s; }
+        .bar:nth-child(3) { animation-delay: 0.4s; }
+        .bar:nth-child(4) { animation-delay: 0.6s; }
+        .bar:nth-child(5) { animation-delay: 0.8s; }
+
+        .analysis-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .result-card:nth-child(1) { animation-delay: 1.5s; }
+        .result-card:nth-child(2) { animation-delay: 1.7s; }
+        .result-card:nth-child(3) { animation-delay: 1.9s; }
+
+        .result-card:hover {
+            border-color: #2E75B5;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 117, 181, 0.2);
+        }
+
+        .result-card h4 {
+            color: #2E75B5;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .risk-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #C00000;
+            margin: 1rem 0;
+        }
+
+        .risk-level {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #C00000;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* IO Psychology Section */
+        .io-psychology {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4rem 2rem;
+        }
+
+        .io-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .io-psychology h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2E75B5;
+            margin-bottom: 1rem;
+        }
+
+        .io-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .io-principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .io-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .io-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .io-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .io-card h3 {
+            color: #2E75B5;
+            margin-bottom: 1rem;
+        }
+
+        /* ROI Section */
+        .roi-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .roi-section h2 {
+            font-size: 2.5rem;
+            color: #2E75B5;
+            margin-bottom: 2rem;
+        }
+
+        .roi-calculator-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .roi-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .roi-metric {
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .roi-metric h4 {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .roi-metric .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2E75B5;
+        }
+
+        .roi-metric.savings .value {
+            color: #00B050;
+        }
+
+        .roi-metric.roi-percentage .value {
+            color: #00B050;
+            font-size: 3.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2E75B5 0%, #1a4d7a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cta-form input {
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .cta-form button {
+            background: #C00000;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cta-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a4d7a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes barPulse {
+            0%, 100% {
+                transform: scaleY(0.4);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .process-flow {
+                flex-direction: column;
+            }
+            
+            .process-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">📊 Service Economy Data Lab</div>
+            <ul class="nav-links">
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#roi">ROI Calculator</a></li>
+                <li><a href="#apply">Apply Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Stop Losing Money to Turnover & Lawsuits</h1>
+        <p>Data-driven compliance solutions for Chicago service businesses</p>
+        <a href="#apply" class="cta-button">Get Your Free Assessment</a>
+    </section>
+
+    <section class="disasters">
+        <h2>The Three Disasters Costing You Money</h2>
+        <div class="disaster-grid">
+            <div class="disaster-card">
+                <div class="io-icon">⚖️</div>
+                <h3>Labor Law Violations</h3>
+                <div class="cost">$50k-$500k+</div>
+                <p>Fair Workweek violations cost $300-$500 per violation per employee. One lawsuit can bankrupt a small business.</p>
+            </div>
+            <div class="disaster-card">
+                <div class="io-icon">🔄</div>
+                <h3>Employee Turnover</h3>
+                <div class="cost">$5k-$15k each</div>
+                <p>Recruiting, training, and lost productivity. With 65% turnover, a 20-employee business loses $65,000+ annually.</p>
+            </div>
+            <div class="disaster-card">
+                <div class="io-icon">📉</div>
+                <h3>Toxic Leadership</h3>
+                <div class="cost">Unmeasurable</div>
+                <p>High performers quit first. Reputation suffers. Recruiting gets harder. "Quiet quitting" spreads through teams.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section" id="process">
+        <div class="process-container">
+            <h2>How Our System Works</h2>
+            <p class="process-subtitle">From your data to actionable insights in 5 steps</p>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="process-icon">📋</div>
+                    <h3>Data Collection</h3>
+                    <p>30-minute assessment capturing scheduling, time tracking, and management practices</p>
+                </div>
+                
+                <div class="process-arrow">→</div>
+                
+                <div class="process-step">
+                    <div class="process-icon">⚙️</div>
+                    <h3>System Import</h3>
+                    <p>Your responses automatically populate our compliance risk database</p>
+                </div>
+                
+                <div class="process-arrow">→</div>
+                
+                <div class="process-step">
+                    <div class="process-icon">🔍</div>
+                    <h3>Risk Analysis</h3>
+                    <p>AI-powered algorithms identify violations, turnover drivers, and leadership gaps</p>
+                </div>
+                
+                <div class="process-arrow">→</div>
+                
+                <div class="process-step">
+                    <div class="process-icon">🧠</div>
+                    <h3>I/O Psychology</h3>
+                    <p>Evidence-based recommendations rooted in organizational psychology research</p>
+                </div>
+                
+                <div class="process-arrow">→</div>
+                
+                <div class="process-step">
+                    <div class="process-icon">📊</div>
+                    <h3>Actionable Report</h3>
+                    <p>Comprehensive audit with risk score, cost analysis, and ROI projections</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="data-viz-section">
+        <h2>Watch Your Data Transform Into Insights</h2>
+        
+        <div class="data-flow-container">
+            <h3 style="text-align: center; color: #2E75B5; margin-bottom: 2rem;">Sample Business Analysis</h3>
+            
+            <div class="data-inputs">
+                <div class="data-input-card">
+                    <h4>📥 Employee Count</h4>
+                    <div class="data-value">20</div>
+                </div>
+                <div class="data-input-card">
+                    <h4>📥 Turnover Rate</h4>
+                    <div class="data-value">65%</div>
+                </div>
+                <div class="data-input-card">
+                    <h4>📥 Schedule Advance Notice</h4>
+                    <div class="data-value">3 days</div>
+                </div>
+            </div>
+
+            <div class="processing-animation">
+                <h3 style="color: #2E75B5; margin-bottom: 1rem;">⚡ Analyzing with I/O Psychology Framework</h3>
+                <div class="processing-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <p style="color: #666; font-style: italic;">Evaluating compliance risk • Calculating turnover costs • Assessing leadership patterns</p>
+            </div>
+
+            <div class="analysis-results">
+                <div class="result-card">
+                    <h4>🎯 Compliance Risk Score</h4>
+                    <div class="risk-score">42/100</div>
+                    <div class="risk-level">HIGH RISK</div>
+                    <p style="margin-top: 1rem; color: #666;">Fair Workweek violations likely. Schedule advance notice below 10-day requirement.</p>
+                </div>
+                
+                <div class="result-card">
+                    <h4>💰 Annual Turnover Cost</h4>
+                    <div class="risk-score" style="color: #C00000;">$65,000</div>
+                    <p style="color: #666;">13 employees replaced annually at $5,000 each. Above industry average.</p>
+                </div>
+                
+                <div class="result-card">
+                    <h4>📈 Potential Savings</h4>
+                    <div class="risk-score" style="color: #00B050;">$51,000</div>
+                    <p style="color: #666;">With compliance + leadership interventions (729% ROI in Year 1)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="io-psychology" id="methodology">
+        <div class="io-container">
+            <h2>Rooted in I/O Psychology Science</h2>
+            <p class="io-subtitle">Evidence-based solutions from Industrial-Organizational Psychology research</p>
+            
+            <div class="io-principles">
+                <div class="io-card">
+                    <div class="io-icon">🧪</div>
+                    <h3>Job Design Theory</h3>
+                    <p>Restructure roles to increase autonomy, skill variety, and task significance—proven drivers of retention.</p>
+                </div>
+                
+                <div class="io-card">
+                    <div class="io-icon">👥</div>
+                    <h3>Leadership Styles</h3>
+                    <p>Identify toxic management patterns (micromanagement, inconsistency) and implement transformational leadership practices.</p>
+                </div>
+                
+                <div class="io-card">
+                    <div class="io-icon">⚡</div>
+                    <h3>Motivation Science</h3>
+                    <p>Apply self-determination theory to create work environments that fulfill psychological needs for competence, autonomy, and relatedness.</p>
+                </div>
+                
+                <div class="io-card">
+                    <div class="io-icon">📋</div>
+                    <h3>Performance Management</h3>
+                    <p>Replace subjective evaluations with objective, behavior-based feedback systems that drive improvement.</p>
+                </div>
+                
+                <div class="io-card">
+                    <div class="io-icon">🎯</div>
+                    <h3>Organizational Justice</h3>
+                    <p>Ensure procedural, distributive, and interpersonal fairness—critical for reducing turnover and legal exposure.</p>
+                </div>
+                
+                <div class="io-card">
+                    <div class="io-icon">🔄</div>
+                    <h3>Change Management</h3>
+                    <p>Implement Lewin's Change Model to successfully adopt new policies without disrupting operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roi-section" id="roi">
+        <h2>Real ROI, Real Numbers</h2>
+        
+        <div class="roi-calculator-preview">
+            <h3 style="color: #2E75B5; margin-bottom: 2rem;">Sample Business: 20 Employees, 65% Turnover</h3>
+            
+            <div class="roi-numbers">
+                <div class="roi-metric">
+                    <h4>Current Annual Cost</h4>
+                    <div class="value">$85,000</div>
+                </div>
+                
+                <div class="roi-metric">
+                    <h4>Investment Required</h4>
+                    <div class="value">$7,000</div>
+                </div>
+                
+                <div class="roi-metric savings">
+                    <h4>First Year Savings</h4>
+                    <div class="value">$58,000</div>
+                </div>
+                
+                <div class="roi-metric roi-percentage">
+                    <h4>Return on Investment</h4>
+                    <div class="value">729%</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 1.2rem; color: #666;">
+                Spending $7,000 to save $58,000 isn't charity—it's basic math.
+            </p>
+            
+            <a href="#apply" class="cta-button" style="margin-top: 2rem;">Calculate Your ROI</a>
+        </div>
+    </section>
+
+    <section class="cta-section" id="apply">
+        <h2>Get Your Free Compliance Assessment</h2>
+        <p>Limited to 25 Chicago Service Businesses • Normally $2,500 • Free for Research Participants</p>
+        
+        <form class="cta-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you within 24 hours to schedule your assessment.');">
+            <input type="text" placeholder="Business Name" required>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <input type="number" placeholder="Number of Employees" required>
+            <button type="submit">Apply for Free Assessment</button>
+        </form>
+        
+        <p style="margin-top: 2rem; opacity: 0.9;">
+            ✓ 30-minute assessment<br>
+            ✓ Comprehensive compliance report<br>
+            ✓ ROI projections<br>
+            ✓ No obligation
+        </p>
+    </section>
+
+    <footer>
+        <p><strong>Service Economy Data Lab</strong></p>
+        <p>Jessica Harp, MBA | Industrial-Organizational Psychology</p>
+        <p>Retention & Compliance Research for Chicago Service Industries</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">© 2025 Service Economy Data Lab. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.disaster-card, .io-card, .result-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
